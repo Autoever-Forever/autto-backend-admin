@@ -1,5 +1,6 @@
-package com.example.auttobackendadmin.dto;
+package com.example.auttobackendadmin.dto.request;
 
+import com.example.auttobackendadmin.dto.SeatInventoryRequest;
 import com.example.auttobackendadmin.dto.requestDto.RegisterProductRequestDto;
 import jakarta.persistence.Column;
 import lombok.Getter;
