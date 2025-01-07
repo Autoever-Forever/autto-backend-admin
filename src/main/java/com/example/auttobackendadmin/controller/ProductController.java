@@ -1,8 +1,8 @@
 package com.example.auttobackendadmin.controller;
 
 import com.example.auttobackendadmin.common.dto.CommandSuccessResponse;
-import com.example.auttobackendadmin.dto.RegisterProductRequest;
-import com.example.auttobackendadmin.exception.ProductAccessException;
+import com.example.auttobackendadmin.dto.request.RegisterProductRequest;
+import com.example.auttobackendadmin.exception.ProductRegisteration.ProductAccessException;
 import com.example.auttobackendadmin.security.UserPrincipal;
 import com.example.auttobackendadmin.service.ProductService;
 import lombok.RequiredArgsConstructor;

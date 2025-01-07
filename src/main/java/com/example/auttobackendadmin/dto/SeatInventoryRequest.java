@@ -13,4 +13,4 @@ public class SeatInventoryRequest {
     private String currencyCode;
     private Integer reservedSeats;
     private Integer totalSeats;
-} 
+}

@@ -1,4 +1,6 @@
-package com.example.auttobackendadmin.exception;
+package com.example.auttobackendadmin.exception.ProductRegisteration;
+
+import com.example.auttobackendadmin.exception.ProductException;
 
 public class NotExistsProductException extends ProductException {
     private static final String message = "존재하지 않는 공연 정보입니다.";
