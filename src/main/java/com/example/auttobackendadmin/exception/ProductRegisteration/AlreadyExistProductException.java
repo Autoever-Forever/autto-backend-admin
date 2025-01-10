@@ -1,4 +1,6 @@
-package com.example.auttobackendadmin.exception;
+package com.example.auttobackendadmin.exception.ProductRegisteration;
+
+import com.example.auttobackendadmin.exception.ProductException;
 
 public class AlreadyExistProductException extends ProductException {
 

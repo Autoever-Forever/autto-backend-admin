@@ -1,15 +1,12 @@
 package com.example.auttobackendadmin.service;
 
 import com.example.auttobackendadmin.dto.requestDto.RegisterProductRequestDto;
-import com.example.auttobackendadmin.exception.NotExistsProductException;
 import com.example.auttobackendadmin.entity.Product;
 import com.example.auttobackendadmin.entity.SeatByDateInventory;
 import com.example.auttobackendadmin.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.UUID;
 
 
 @Service
