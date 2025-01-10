@@ -31,7 +31,7 @@ logging:
     org.hibernate.SQL: DEBUG
 
 minio:
-  endpoint: http://localhost:9000
-  accessKey: minioadmin
-  secretKey: minioadmin
-  bucket: products
+  endpoint: http://localhost:9000/
+  accessKey: obDCGyvQjs8zPSBW7Bpd
+  secretKey: wVLkHJ04z4hyj7xxhk4ksEyRDsdyEPOnNZWImsI8
+  bucket: dev-test

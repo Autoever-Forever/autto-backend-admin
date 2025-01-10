@@ -1,11 +1,9 @@
 package com.example.auttobackendadmin.dto;
 
 import com.example.auttobackendadmin.dto.requestDto.RegisterProductRequestDto;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -35,15 +33,9 @@ public class RegisterProductRequest {
     @Column(nullable = false)
     private LocalDateTime performEndDate;
 
-    @JsonIgnore
-    private MultipartFile thumbnail;
-
-    @JsonIgnore
-    private MultipartFile poster;
-
     private List<SeatInventoryRequest> seatInventories;
 
-    public RegisterProductRequestDto toServiceDto(String thumbnailUrl, String posterUrl){
+    public RegisterProductRequestDto toServiceDto(String thumbnailUrl, String posterUrl) {
         return new RegisterProductRequestDto(
                 title,
                 location,

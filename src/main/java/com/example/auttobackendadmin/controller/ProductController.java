@@ -25,15 +25,17 @@ public class ProductController {
     private final FileService fileService;
 
     @PostMapping("/admin/product")
-    public ResponseEntity<CommandSuccessResponse> registerIndividualProduct(@Validated @ModelAttribute RegisterProductRequest request,
+    public ResponseEntity<CommandSuccessResponse> registerIndividualProduct(@Validated @RequestPart("request") RegisterProductRequest request,
+                                                                            @RequestPart("thumbnail") MultipartFile thumbnail,
+                                                                            @RequestPart("poster") MultipartFile poster,
                                                                             @AuthenticationPrincipal UserPrincipal userPrincipal) {
         if(!userPrincipal.isAdmin()) {
             throw new ProductAccessException();
         }
 
         log.info("공연 정보 생성 요청 api 시작");
-        String thumbnailUrl = uploadImage(request.getThumbnail(), request.getTitle());
-        String posterUrl = uploadImage(request.getPoster(), request.getTitle());
+        String thumbnailUrl = uploadImage(thumbnail, request.getTitle());
+        String posterUrl = uploadImage(poster, request.getTitle());
         productService.registerIndividualProduct(request.toServiceDto(thumbnailUrl, posterUrl));
         log.info("공연 정보 생성 요청 api 종료");
 
