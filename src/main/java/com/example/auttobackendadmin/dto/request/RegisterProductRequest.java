@@ -34,12 +34,9 @@ public class RegisterProductRequest {
     @Column(nullable = false)
     private LocalDateTime performEndDate;
 
-    private String thumbnailUrl;
-    private String posterUrl;
-
     private List<SeatInventoryRequest> seatInventories;
 
-    public RegisterProductRequestDto toServiceDto(){
+    public RegisterProductRequestDto toServiceDto(String thumbnailUrl, String posterUrl) {
         return new RegisterProductRequestDto(
                 title,
                 location,
@@ -54,6 +51,5 @@ public class RegisterProductRequest {
                 seatInventories
         );
     }
-
 }
 

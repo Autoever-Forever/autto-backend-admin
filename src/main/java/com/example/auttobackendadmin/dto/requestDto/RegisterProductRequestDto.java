@@ -1,5 +1,7 @@
 package com.example.auttobackendadmin.dto.requestDto;
 
+
+
 import com.example.auttobackendadmin.dto.SeatInventoryRequest;
 import com.example.auttobackendadmin.entity.Product;
 import jakarta.persistence.Column;
