@@ -47,7 +47,7 @@ public class Product extends BaseEntity {
     private String posterUrl;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<SeatByDateInventory> seatInventories = new ArrayList<>();
+    private List<Inventory> seatInventories = new ArrayList<>();
 
     protected Product() {
         super(BaseStatus.ACTIVE);
@@ -76,7 +76,7 @@ public class Product extends BaseEntity {
         this.posterUrl = posterUrl;
     }
 
-    public void addSeatInventory(SeatByDateInventory inventory) {
+    public void addSeatInventory(Inventory inventory) {
         this.seatInventories.add(inventory);
     }
 }

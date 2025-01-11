@@ -1,5 +1,6 @@
 package com.example.auttobackendadmin.entity;
 
+import com.example.auttobackendadmin.exception.InventoryValidation.NotEnoughSeatException;
 import jakarta.persistence.*;
 import lombok.Getter;
 import java.math.BigDecimal;
@@ -9,7 +10,7 @@ import java.util.UUID;
 @Getter
 @Entity
 @Table(name = "seat_by_date_inventory")
-public class SeatByDateInventory extends BaseEntity {
+public class Inventory extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(columnDefinition = "BINARY(16)")
@@ -34,16 +35,16 @@ public class SeatByDateInventory extends BaseEntity {
     @Column(name = "total_seats")
     private Integer totalSeats;
 
-    protected SeatByDateInventory() {
+    protected Inventory() {
         super(BaseStatus.ACTIVE);
     }
 
-    public SeatByDateInventory(Product product,
-                              LocalDateTime date,
-                              BigDecimal price,
-                              String currencyCode,
-                              Integer reservedSeats,
-                              Integer totalSeats) {
+    public Inventory(Product product,
+                     LocalDateTime date,
+                     BigDecimal price,
+                     String currencyCode,
+                     Integer reservedSeats,
+                     Integer totalSeats) {
         super(BaseStatus.ACTIVE);
         this.product = product;
         this.date = date;
@@ -51,5 +52,17 @@ public class SeatByDateInventory extends BaseEntity {
         this.currencyCode = currencyCode;
         this.reservedSeats = reservedSeats;
         this.totalSeats = totalSeats;
+    }
+
+    public void reserveSeats(int quantity) {
+        int availableSeats = this.totalSeats - this.reservedSeats;
+        if (availableSeats < quantity) {
+            throw new NotEnoughSeatException();
+        }
+        this.reservedSeats += quantity;
+    }
+
+    public int getAvailableSeats() {
+        return this.totalSeats - this.reservedSeats;
     }
 } 

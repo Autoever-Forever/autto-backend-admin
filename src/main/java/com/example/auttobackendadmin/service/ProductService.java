@@ -2,7 +2,7 @@ package com.example.auttobackendadmin.service;
 
 import com.example.auttobackendadmin.dto.requestDto.RegisterProductRequestDto;
 import com.example.auttobackendadmin.entity.Product;
-import com.example.auttobackendadmin.entity.SeatByDateInventory;
+import com.example.auttobackendadmin.entity.Inventory;
 import com.example.auttobackendadmin.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,7 +20,7 @@ public class ProductService {
         
         // 좌석 인벤토리 생성 및 연결
         dto.getSeatInventories().forEach(seatDto -> {
-            SeatByDateInventory inventory = new SeatByDateInventory(
+            Inventory inventory = new Inventory(
                 product,
                 seatDto.getDate(),
                 seatDto.getPrice(),
