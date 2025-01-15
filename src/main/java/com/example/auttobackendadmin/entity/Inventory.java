@@ -1,5 +1,8 @@
 package com.example.auttobackendadmin.entity;
 
+import com.example.auttobackendadmin.common.domain.BaseEntity;
+import com.example.auttobackendadmin.common.domain.BaseStatus;
+import com.example.auttobackendadmin.exception.InventoryValidation.CancellationBelowZeroException;
 import com.example.auttobackendadmin.exception.InventoryValidation.NotEnoughSeatException;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -60,6 +63,14 @@ public class Inventory extends BaseEntity {
             throw new NotEnoughSeatException();
         }
         this.reservedSeats += quantity;
+    }
+
+    public void cancelSeats(int quantity) {
+        int expectedReservedSeats = this.reservedSeats - quantity;
+        if (expectedReservedSeats < 0) {
+            throw new CancellationBelowZeroException();
+        }
+        this.reservedSeats -= quantity;
     }
 
     public int getAvailableSeats() {

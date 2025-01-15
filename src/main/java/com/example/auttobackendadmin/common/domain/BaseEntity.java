@@ -1,4 +1,4 @@
-package com.example.auttobackendadmin.entity;
+package com.example.auttobackendadmin.common.domain;
 
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.EnumType;

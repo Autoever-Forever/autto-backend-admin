@@ -1,5 +1,7 @@
 package com.example.auttobackendadmin.entity;
 
+import com.example.auttobackendadmin.common.domain.BaseEntity;
+import com.example.auttobackendadmin.common.domain.BaseStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
 import java.time.LocalDateTime;
