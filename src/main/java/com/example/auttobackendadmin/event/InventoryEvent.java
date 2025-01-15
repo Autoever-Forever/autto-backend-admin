@@ -15,11 +15,11 @@ public class InventoryEvent extends Event {
     @JsonSerialize(using = UUIDToHexSerializer.class)
     @JsonDeserialize(using = HexToUUIDDeserializer.class)
     private UUID inventoryId;
-    private Integer quantity;
-    private EventType eventType;
-
-    public enum EventType {
-        RESERVED,
-        CANCELED
-    }
+    private int quantity;
+//    private EventType eventType;
+//
+//    public enum EventType {
+//        RESERVED,
+//        CANCELED
+//    }
 } 
