@@ -4,6 +4,7 @@ import com.example.auttobackendadmin.exception.ProductRegisteration.FileUploadEx
 import io.minio.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.kafka.common.errors.NetworkException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
