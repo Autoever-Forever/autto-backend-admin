@@ -1,10 +1,7 @@
 package com.example.auttobackendadmin.event;
 
 import com.example.auttobackendadmin.common.event.Event;
-import com.example.auttobackendadmin.util.HexToUUIDDeserializer;
-import com.example.auttobackendadmin.util.UUIDToHexSerializer;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import java.util.UUID;
@@ -12,14 +9,9 @@ import java.util.UUID;
 @Getter
 @NoArgsConstructor
 public class InventoryEvent extends Event {
-    @JsonSerialize(using = UUIDToHexSerializer.class)
-    @JsonDeserialize(using = HexToUUIDDeserializer.class)
+    @JsonProperty("productId")
     private UUID inventoryId;
+    
+    @JsonProperty("seatCount")
     private int quantity;
-//    private EventType eventType;
-//
-//    public enum EventType {
-//        RESERVED,
-//        CANCELED
-//    }
-} 
+}
