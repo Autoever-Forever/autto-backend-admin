@@ -20,7 +20,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class JwtTokenProvider {
 
-    @Value("${jwt.secret}") //TODO: jwt SECRET 추가 (application.yml)
+    @Value("${jwt.secret}")
     private String secretKey;
 
     private final JwtTokenValidator jwtTokenValidator;

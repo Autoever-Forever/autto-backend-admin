@@ -4,7 +4,8 @@ import com.example.auttobackendadmin.dto.requestDto.InventoryValidationRequestDt
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import java.util.UUID;
-import com.example.auttobackendadmin.util.HexStringToUUIDConverter;
+import com.example.auttobackendadmin.util.
+        HexStringToUUIDConverter;
 
 @Getter
 @NoArgsConstructor
