@@ -69,3 +69,5 @@ logging:
     org.springframework.security: INFO
     org.springframework.web: INFO
     org.hibernate.SQL: INFO
+server:
+  port: ${SEVER_PORT:8080}
