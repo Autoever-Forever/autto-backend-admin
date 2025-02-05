@@ -2,12 +2,11 @@ FROM gradle:8.5-jdk17 AS builder
 WORKDIR /build
 COPY . .
 
-# Gradle 캐시 정리
-RUN gradle clean
-
 # gradlew에 실행 권한 부여
 RUN chmod +x ./gradlew
 
+# Gradle 캐시 정리
+RUN gradle clean
 # Gradle Wrapper를 사용하여 빌드
 RUN ./gradlew build --no-daemon -x test
 
