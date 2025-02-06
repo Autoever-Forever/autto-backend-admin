@@ -1,0 +1,73 @@
+management:
+  server: 
+    port: ${MANAGEMENT_PORT:8084}
+
+app:
+  cors:
+    allowedOrigins: ${ALLOWED_ORIGINS:http://localhost:3000,http://localhost:8080}
+
+spring:
+  kafka:
+    bootstrap-servers: ${KAFKA_SERVERS:localhost:9093}
+    consumer:
+      group-id: ${KAFKA_GROUP_ID:inventory-group}
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "com.example.auttobackendadmin.inventory.domain"
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/${MYSQL_DATABASE:ProductDB}
+    username: ${MYSQL_USERNAME:root}
+    password: ${MYSQL_PASSWORD:1234}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 10
+  
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+jwt:
+  secret: ${JWT_SECRET:64461f01e1af406da538b9c48d801ce59142452199ff112fb5404c8e7e98e3ff}
+  header: Authorization
+  prefix: "Bearer "
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.springframework.web: DEBUG
+    org.hibernate.SQL: DEBUG
+
+minio:
+  endpoint: ${MINIO_ENDPOINT:http://localhost:9000/}
+  accessKey: ${MINIO_ACCESS_KEY:obDCGyvQjs8zPSBW7Bpd}
+  secretKey: ${MINIO_SECRET_KEY:wVLkHJ04z4hyj7xxhk4ksEyRDsdyEPOnNZWImsI8}
+  bucket: ${MINIO_BUCKET:dev-test}
+
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+  jpa:
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+
+logging:
+  level:
+    org.springframework.security: INFO
+    org.springframework.web: INFO
+    org.hibernate.SQL: INFO
+server:
+  port: ${SERVER_PORT:8080}
