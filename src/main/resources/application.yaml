@@ -32,6 +32,9 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
 
 jwt:
   secret: ${JWT_SECRET:64461f01e1af406da538b9c48d801ce59142452199ff112fb5404c8e7e98e3ff}
@@ -50,21 +53,21 @@ minio:
   secretKey: ${MINIO_SECRET_KEY:wVLkHJ04z4hyj7xxhk4ksEyRDsdyEPOnNZWImsI8}
   bucket: ${MINIO_BUCKET:dev-test}
 
-#---
-#spring:
-#  config:
-#    activate:
-#      on-profile: prod
-#  jpa:
-#    show-sql: false
-#    properties:
-#      hibernate:
-#        format_sql: false
-#
-#logging:
-#  level:
-#    org.springframework.security: INFO
-#    org.springframework.web: INFO
-#    org.hibernate.SQL: INFO
-#server:
-#  port: ${SERVER_PORT:8080}
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+  jpa:
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+
+logging:
+  level:
+    org.springframework.security: INFO
+    org.springframework.web: INFO
+    org.hibernate.SQL: INFO
+server:
+  port: ${SERVER_PORT:8080}
