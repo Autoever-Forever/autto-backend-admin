@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 
 import com.example.auttobackendadmin.security.UserPrincipal;
 
+import java.util.Base64;
 import java.util.UUID;
 
 @Slf4j
@@ -55,15 +56,10 @@ public class JwtTokenProvider {
     }
 
     private Claims extractClaims(String token) {
-        // return Jwts.parserBuilder()
-        //         .setSigningKey(Keys.hmacShaKeyFor(secretKey.getBytes()))
-        //         .build()
-        //         .parseClaimsJws(token)
-        //         .getBody();
         try {
             log.debug("Validating token with secret key length: {}", secretKey.length());  // 디버깅용
             return Jwts.parserBuilder()
-                    .setSigningKey(Keys.hmacShaKeyFor(secretKey.getBytes()))
+                    .setSigningKey(Keys.hmacShaKeyFor(Base64.getDecoder().decode(secretKey)))
                     .build()
                     .parseClaimsJws(token)
                     .getBody();
