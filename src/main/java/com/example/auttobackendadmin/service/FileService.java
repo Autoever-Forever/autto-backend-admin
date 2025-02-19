@@ -23,7 +23,7 @@ public class FileService {
     private String bucketName;
 
 //    @Value("${minio.fileUrl}")  // DNS 이름을 주입
-    private String minioFileUrl = "http://auttoforever.com";
+    private String minioFileUrl = "http://auttoforever.com:13008";
 
     public String uploadFile(MultipartFile file, String directory) {
         validateAndCreateBucket();
