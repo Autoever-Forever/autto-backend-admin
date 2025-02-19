@@ -22,8 +22,8 @@ public class FileService {
     @Value("${minio.bucket}")
     private String bucketName;
 
-    @Value("${minio.endpoint}")
-    private String minioEndpoint;
+//    @Value("${minio.fileUrl}")  // DNS 이름을 주입
+    private String minioFileUrl = "http://auttoforever.com";
 
     public String uploadFile(MultipartFile file, String directory) {
         validateAndCreateBucket();
@@ -67,7 +67,7 @@ public class FileService {
     }
 
     private String generateFileUrl(String fileName) {
-        return minioEndpoint + "/" + bucketName + "/" + fileName;
+        return minioFileUrl + "/" + bucketName + "/" + fileName;
     }
 
     private String getFileExtension(String fileName) {
